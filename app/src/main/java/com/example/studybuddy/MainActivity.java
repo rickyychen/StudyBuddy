@@ -23,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
     private Button move;
-    private Button host;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,14 +48,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        /*
-        host = findViewById(R.id.button2);
-        host.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, session.class);
-                startActivity(intent);
-            }
-        });*/
-    }
-}
+
+}}
 

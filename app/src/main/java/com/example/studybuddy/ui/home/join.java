@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import com.example.studybuddy.R;
+
 public class join extends AppCompatActivity {
 
     @Override

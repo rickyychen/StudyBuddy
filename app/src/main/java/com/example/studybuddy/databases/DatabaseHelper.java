@@ -24,6 +24,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     //first time a database is accessed. Generate table if necessary
     @Override
     public void onCreate(SQLiteDatabase db) {
+
         String createStudentStatement  = "";
         String createEventStatement = "";
         db.execSQL(createEventStatement);

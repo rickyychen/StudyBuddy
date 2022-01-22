@@ -1,8 +1,8 @@
 package com.example.studybuddy.databases;
 
-public class EventDBHelper {
+public class EventDBHelper implements TableDB {
 
-    public static String main(){
+    public String create(){
 
         String query = "CREATE TABLE " +  "events_table" + " " +
                 " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " + "event_name" + " TEXT, " +
@@ -11,7 +11,29 @@ public class EventDBHelper {
 
         return query;
 
-    };
+    }
+
+    @Override
+    public String addData() {
+        return null;
+    }
+
+    @Override
+    public String deleteData() {
+        return null;
+    }
+
+    @Override
+    public String updateData() {
+        return null;
+    }
+
+    @Override
+    public String mergeTable() {
+        return null;
+    }
+
+    ;
 
 
 }

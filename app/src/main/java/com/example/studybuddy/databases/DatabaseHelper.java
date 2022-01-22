@@ -14,8 +14,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static CourseDBHelper coursesTable = new CourseDBHelper();
     public static EventDBHelper eventsTable = new EventDBHelper();
     public static StudentDBHelper studentsTable = new StudentDBHelper();
-//    public static final String CLASSES_TABLE = "classes_table";
-//    public static final String CLASS_NAME = "class_name";
 
     public DatabaseHelper(@Nullable Context context) {
         super(context, STUDY_BUDDY_DB, null, 1);
@@ -26,9 +24,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
 
         String createStudentStatement  = "";
-        String createEventStatement = "";
-        db.execSQL(createEventStatement);
+        db.execSQL(coursesTable.create());
+        db.execSQL(eventsTable.create());
     }
+
 
     // Called if the database version number changes. Prevents prev. users apps from breaking when
     // you change the database.

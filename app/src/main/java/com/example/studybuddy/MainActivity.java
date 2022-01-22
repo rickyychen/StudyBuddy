@@ -5,7 +5,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.studybuddy.ui.home.find_session;
+
 import com.example.studybuddy.ui.home.session;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
     private Button move;
+    private Button host;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,12 +45,18 @@ public class MainActivity extends AppCompatActivity {
         move = findViewById(R.id.course1_button);
         move.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, find_session.class);
+                startActivity(intent);
+            }
+        });
+        /*
+        host = findViewById(R.id.button2);
+        host.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, session.class);
                 startActivity(intent);
             }
-
-
-        });
+        });*/
     }
 }
 

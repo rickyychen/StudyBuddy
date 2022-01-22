@@ -1,16 +1,21 @@
-package com.example.studybuddy;
+package com.example.studybuddy.databases;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.media.metrics.Event;
 
 import androidx.annotation.Nullable;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     public static final String STUDY_BUDDY_DB = "StudyBuddy.db";
-    public static final String CLASSES_TABLE = "classes_table";
-    public static final String CLASS_NAME = "class_name";
+
+    public static CourseDBHelper coursesTable = new CourseDBHelper();
+    public static EventDBHelper eventsTable = new EventDBHelper();
+    public static StudentDBHelper studentsTable = new StudentDBHelper();
+//    public static final String CLASSES_TABLE = "classes_table";
+//    public static final String CLASS_NAME = "class_name";
 
     public DatabaseHelper(@Nullable Context context) {
         super(context, STUDY_BUDDY_DB, null, 1);
@@ -20,6 +25,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String createTableStatement = "CREATE TABLE " + CLASSES_TABLE + " " + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " + CLASS_NAME + " TEXT) ";
+        String createStudentStatement  = ;
+        String createEventStatement = ;
         db.execSQL(createTableStatement);
     }
 

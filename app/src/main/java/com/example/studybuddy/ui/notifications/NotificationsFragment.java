@@ -28,15 +28,11 @@ public class NotificationsFragment extends Fragment {
         binding = FragmentNotificationsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textNotifications;
-        notificationsViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
+
         return root;
     }
+
+
 
     @Override
     public void onDestroyView() {
@@ -44,3 +40,4 @@ public class NotificationsFragment extends Fragment {
         binding = null;
     }
 }
+

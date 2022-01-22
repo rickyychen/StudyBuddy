@@ -22,8 +22,8 @@
 
     <TextView
         android:id="@+id/txtDescriptionHome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="285dp"
+        android:layout_height="58dp"
         android:layout_marginTop="16dp"
         android:text="An application meant to help students find\n
 and join study groups through scheduled \n
@@ -31,5 +31,41 @@ study sessions!"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_home" />
+
+    <Button
+        android:id="@+id/course1_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="COMP 202"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.171"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.367" />
+
+    <Button
+        android:id="@+id/course2_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="COMP 206"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.171"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.471" />
+
+    <Button
+        android:id="@+id/course3_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="COMP 273"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.74"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.367" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

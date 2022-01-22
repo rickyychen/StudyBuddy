@@ -1,0 +1,1 @@
+STUDY BUDDY APP for McHacks 2022!!!

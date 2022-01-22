@@ -8,8 +8,7 @@ public class CourseDBHelper {
 
     public static String main(){
 
-        String query = "";
-        String Classessquery = "CREATE TABLE " +  CLASSES_TABLE + " " +
+        String query = "CREATE TABLE " +  CLASSES_TABLE + " " +
                 " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " + CLASS_NAME + " TEXT) ";
         return query;
 

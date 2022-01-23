@@ -18,6 +18,7 @@ import com.example.studybuddy.betterdb.CourseDao;
 import com.example.studybuddy.betterdb.CoursesWithStudents;
 import com.example.studybuddy.betterdb.CoursesWithStudentsDao;
 import com.example.studybuddy.betterdb.EnrolledCourses;
+import com.example.studybuddy.betterdb.EventDao;
 import com.example.studybuddy.betterdb.Student;
 import com.example.studybuddy.betterdb.StudentDao;
 import com.example.studybuddy.databinding.ActivityMainBinding;
@@ -51,23 +52,22 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(binding.navView, navController);
 
 
-        Course course1 = new Course();
-        course1.id = 1000;
-        course1.name = "comp202";
+        Course course1 = new Course(1000, "comp202");
 
-        Student student1 = new Student();
-        student1.studentId = 1;
-        student1.StudentFirstName = "John";
-        student1.StudentLastName = "Doe";
+        Student student1 = new Student(1, "John", "Doe");
 
         Executor executor = Executors.newSingleThreadExecutor();
         executor.execute(new Runnable() {
             @Override
             public void run() {
 
+                // SETTING UP ALL THE DAOS
                 Database dbtool = Room.databaseBuilder(getApplicationContext(), Database.class, "StudyBuddy").build();
                 CourseDao coursedao = dbtool.getCourseDao();
                 StudentDao studentdao = dbtool.getStudentDao();
+                EventDao eventDao = dbtool.getEventDao();
+
+
                 CoursesWithStudentsDao courseswithstudentsdao = dbtool.getCoursesWithStudentsDao();
                 coursedao.insertCourse(course1);
                 studentdao.insertStudent(student1);

@@ -12,4 +12,8 @@ public class Course {
     @ColumnInfo(name = "name")
     public String name;
 
+    public Course(long id, String name){
+        this.id = id;
+        this.name = name;
+    }
 }

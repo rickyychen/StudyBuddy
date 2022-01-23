@@ -15,14 +15,9 @@ import androidx.room.Room;
 
 import com.example.studybuddy.betterdb.Course;
 import com.example.studybuddy.betterdb.CourseDao;
-import com.example.studybuddy.betterdb.CoursesWithEvents;
 import com.example.studybuddy.betterdb.CoursesWithEventsDao;
 import com.example.studybuddy.betterdb.CoursesWithStudents;
 import com.example.studybuddy.betterdb.CoursesWithStudentsDao;
-import com.example.studybuddy.betterdb.CreatedEvent;
-import com.example.studybuddy.betterdb.EnrolledCourses;
-import com.example.studybuddy.betterdb.Event;
-import com.example.studybuddy.betterdb.EventDao;
 import com.example.studybuddy.betterdb.Student;
 import com.example.studybuddy.betterdb.StudentDao;
 import com.example.studybuddy.databinding.ActivityMainBinding;
@@ -129,11 +124,12 @@ public class MainActivity extends AppCompatActivity {
                 // SETTING UP ALL THE DAOS
                 Database dbtool = Room.databaseBuilder(getApplicationContext(), Database.class, "StudyBuddy").build();
                 CourseDao courseDao = dbtool.getCourseDao();
+                StudentDao studentDao = dbtool.getStudentDao();
 
-                StudentDao studentdao = dbtool.getStudentDao();
-                Student stud = studentdao.getStudentsFromStudentId(0);
+                final List<Student> students = studentDao.getAllStudents();
+                Student stud = students.get(0);
                 stud.ActiveCourse = courseDao.getCoursefromName(course).id;
-                studentdao.insertStudent(stud);
+                studentDao.insertStudent(stud);
 
 
             }

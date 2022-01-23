@@ -16,9 +16,7 @@ import androidx.room.Room;
 import com.example.studybuddy.Database;
 import com.example.studybuddy.MainActivity;
 import com.example.studybuddy.R;
-import com.example.studybuddy.betterdb.CoursesWithEvents;
 import com.example.studybuddy.betterdb.CoursesWithEventsDao;
-import com.example.studybuddy.betterdb.CoursesWithStudents;
 import com.example.studybuddy.betterdb.CreatedEvent;
 import com.example.studybuddy.betterdb.Event;
 import com.example.studybuddy.betterdb.EventDao;
@@ -27,6 +25,9 @@ import com.example.studybuddy.betterdb.StudentDao;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.List;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 public class host_session extends AppCompatActivity{
 
@@ -65,19 +66,29 @@ public class host_session extends AppCompatActivity{
         final Button button = findViewById(R.id.button3);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Database dbtool = Room.databaseBuilder(getApplicationContext(), Database.class, "StudyBuddy").build();
 
-                StudentDao studentDao = dbtool.getStudentDao();
-                Student studMuffin = studentDao.getStudentsFromStudentId(0);
+                Executor executor = Executors.newSingleThreadExecutor();
+                executor.execute(new Runnable() {
+                    @Override
+                    public void run() {
 
-                Event newEvent = new Event(studyName, formatedDate, time, descriptionValue, locationValue);
-                EventDao eventDao = dbtool.getEventDao();
+                        Database dbtool = Room.databaseBuilder(getApplicationContext(), Database.class, "StudyBuddy").build();
 
-                CoursesWithEventsDao coursesWithEventsDao = dbtool.getCoursesWithEventsDao();
-                CreatedEvent createdEvent = new CreatedEvent();
-                createdEvent.eventId = newEvent.eventId;
-                createdEvent.id = studMuffin.ActiveCourse;
-                coursesWithEventsDao.insert(createdEvent);
+                        StudentDao studentDao = dbtool.getStudentDao();
+                        final List<Student> students = studentDao.getAllStudents();
+                        Student studMuffin = students.get(0);
+
+                        Event newEvent = new Event(studyName, formatedDate, time, descriptionValue, locationValue);
+                        EventDao eventDao = dbtool.getEventDao();
+
+                        CoursesWithEventsDao coursesWithEventsDao = dbtool.getCoursesWithEventsDao();
+                        CreatedEvent createdEvent = new CreatedEvent();
+                        createdEvent.eventId = newEvent.eventId;
+                        createdEvent.id = studMuffin.ActiveCourse;
+                        coursesWithEventsDao.insert(createdEvent);
+
+                    }
+                });
 
                 Intent intent = new Intent(host_session.this, MainActivity.class);
                 startActivity(intent);

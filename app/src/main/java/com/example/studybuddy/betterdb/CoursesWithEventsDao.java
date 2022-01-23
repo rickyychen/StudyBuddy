@@ -18,4 +18,8 @@ public interface CoursesWithEventsDao {
     @Transaction
     @Query("SELECT * FROM courses")
     List<CoursesWithEvents> getAllCoursesWithEvents();
+
+    @Transaction
+    @Query("SELECT * FROM courses WHERE id= :id")
+    List<CoursesWithEvents> getCoursesWithEventsFromId(long id);
 }

@@ -37,36 +37,34 @@ public class host_session extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_host_session);
 
-
-
-        DatePicker datepicker = (DatePicker) findViewById(R.id.datePicker1);
-        int day = datepicker.getDayOfMonth();
-        int month = datepicker.getMonth();
-        int year = datepicker.getYear();
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(year, month, day);
-
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-        String formatedDate = sdf.format(calendar.getTime());
-
-        TimePicker timepicker = (TimePicker) findViewById(R.id.timePicker1);
-        int hour = timepicker.getHour();
-        int minute = timepicker.getMinute();
-
-        String time = hour + ":" + minute;
-
-        EditText description = (EditText) findViewById(R.id.description);
-        String descriptionValue = description.getText().toString();
-        EditText study = (EditText) findViewById(R.id.name);
-        String studyName = study.getText().toString();
-        EditText location = (EditText) findViewById(R.id.location);
-        String locationValue = location.getText().toString();
-
-
         final Button button = findViewById(R.id.button3);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
+                DatePicker datepicker = (DatePicker) findViewById(R.id.datePicker1);
+                int day = datepicker.getDayOfMonth();
+                int month = datepicker.getMonth();
+                int year = datepicker.getYear();
+                Calendar calendar = Calendar.getInstance();
+                calendar.set(year, month, day);
+
+                SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+                String formatedDate = sdf.format(calendar.getTime());
+
+                TimePicker timepicker = (TimePicker) findViewById(R.id.timePicker1);
+                int hour = timepicker.getHour();
+                int minute = timepicker.getMinute();
+
+                String time = hour + ":" + minute;
+
+                EditText description = (EditText) findViewById(R.id.description);
+                String descriptionValue = description.getText().toString();
+                EditText study = (EditText) findViewById(R.id.name);
+                String studyName = study.getText().toString();
+                EditText location = (EditText) findViewById(R.id.location);
+                String locationValue = location.getText().toString();
+
+                System.out.println(locationValue);
                 Executor executor = Executors.newSingleThreadExecutor();
                 executor.execute(new Runnable() {
                     @Override
@@ -86,6 +84,7 @@ public class host_session extends AppCompatActivity{
                         createdEvent.eventId = newEvent.eventId;
                         createdEvent.id = studMuffin.ActiveCourse;
                         coursesWithEventsDao.insert(createdEvent);
+
 
                     }
                 });

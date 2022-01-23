@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
                 //createdEvent.eventId = event1.eventId;
                 //createdEvent.id = comp2.id;
 
-                List<CoursesWithStudents> list = courseswithstudentsdao.getAllCoursesWithStudents();
+                //List<CoursesWithStudents> list = courseswithstudentsdao.getAllCoursesWithStudents();
                 //List<CoursesWithEvents> listEvents = coursesWithEventsDao.getAllCoursesWithEvents();
 
                 runOnUiThread(new Runnable() {

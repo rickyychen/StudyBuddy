@@ -112,14 +112,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        /*
-        host = findViewById(R.id.button2);
-        host.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, session.class);
-                startActivity(intent);
-            }
-        });*/
     }
 
     @UiThread

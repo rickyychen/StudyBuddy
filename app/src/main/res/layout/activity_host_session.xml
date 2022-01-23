@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        tools:context=".ui.home.host_session">
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="111dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="80dp"
+            android:text="Host"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/description" />
+
+        <Spinner
+            android:id="@+id/spinner_location"
+            android:layout_width="0dp"
+            android:layout_height="49dp"
+            android:layout_marginEnd="108dp"
+            android:text="Location"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView"
+            app:layout_constraintTop_toTopOf="@+id/textView"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="101dp"
+            android:layout_marginTop="90dp"
+            android:layout_marginEnd="2dp"
+            android:layout_marginBottom="35dp"
+            android:text="Location"
+            app:layout_constraintBottom_toTopOf="@+id/datePicker1"
+            app:layout_constraintEnd_toStartOf="@+id/spinner_location"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/description"
+            android:layout_width="188dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="25dp"
+            android:inputType="text"
+            android:text="study description"
+            app:layout_constraintBottom_toTopOf="@+id/button3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/timePicker1" />
+
+    <DatePicker
+        android:id="@+id/datePicker1"
+        android:layout_width="279dp"
+        android:layout_height="103dp"
+        android:layout_marginBottom="30dp"
+        android:calendarViewShown="false"
+        android:datePickerMode="spinner"
+        app:layout_constraintBottom_toTopOf="@+id/timePicker1"
+        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <TimePicker
+            android:id="@+id/timePicker1"
+            android:layout_width="215dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="44dp"
+            android:timePickerMode="spinner"
+            app:layout_constraintBottom_toTopOf="@+id/description"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/datePicker1" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

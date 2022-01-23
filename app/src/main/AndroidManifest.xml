@@ -10,14 +10,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.StudyBuddy">
         <activity
-            android:name=".ui.home.join"
-            android:label="Join"
+            android:name=".ui.home.host_session"
             android:exported="false" />
+        <activity
+            android:name=".ui.home.join"
+            android:exported="false"
+            android:label="Join" />
         <activity
             android:name=".ui.home.find_session"
-            android:exported="false" />
-        <activity
-            android:name=".ui.home.session"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

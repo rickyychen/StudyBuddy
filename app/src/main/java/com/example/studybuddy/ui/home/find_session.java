@@ -1,5 +1,10 @@
 package com.example.studybuddy.ui.home;
 
+import android.content.DialogInterface;
+import android.view.View;
+import android.widget.Adapter;
+import android.widget.AdapterView;
+import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -22,13 +27,21 @@ public class find_session extends AppCompatActivity {
         String course = i.getStringExtra("COURSE");
         ((TextView)findViewById(R.id.textView2)).setText(course);
 
+        Button host_button = (Button) findViewById(R.id.button2);
+        host_button.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent intent = new Intent(find_session.this, host_session.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     public void proceed(View v){
         Intent i = new Intent(find_session.this, join.class);
         startActivity(i);
 
-            }
+    }
 
 
 }

@@ -12,11 +12,4 @@ public class Course {
     @ColumnInfo(name = "name")
     public String name;
 
-
-
-
-
-
-
-
 }

@@ -8,7 +8,4 @@ public class EnrolledCourses {
     public long id;
     public long studentId;
 
-
-
-
 }

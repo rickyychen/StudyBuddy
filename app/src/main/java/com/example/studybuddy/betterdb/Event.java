@@ -17,6 +17,8 @@ public class Event {
     public String eventTime;
     @ColumnInfo(name = "eventdescription")
     public String eventDescription;
+    @ColumnInfo(name = "eventlocation")
+    public String eventLocation;
 
     public Event(long eventId, String eventName, String eventDate, String eventTime, String eventDescription){
         this.eventId = eventId;

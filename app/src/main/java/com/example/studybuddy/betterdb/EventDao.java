@@ -17,6 +17,9 @@ public interface EventDao {
     @Query("SELECT * FROM events where eventid= :eventId")
     public Event getEventByID(long eventId);
 
+    @Query("SELECT * FROM events WHERE eventlocation LIKE :pLocation")
+    List<Event> getEventByLocation(String pLocation);
+
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertEvent(Event event);

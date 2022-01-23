@@ -31,8 +31,7 @@ import java.util.concurrent.Executors;
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
-    private Button move;
-    private Button host;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
+
 
         Course course1 = new Course();
         course1.id = 1000;
@@ -90,17 +90,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
-
-
-        move = findViewById(R.id.course1_button);
-        move.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, find_session.class);
-                startActivity(intent);
-            }
-        });
         /*
         host = findViewById(R.id.button2);
         host.setOnClickListener(new View.OnClickListener() {
@@ -114,6 +103,13 @@ public class MainActivity extends AppCompatActivity {
     @UiThread
     public void updateUi(List<Course> courses){
 
+    }
+
+    public void course_select(View v){
+        Intent i = new Intent(MainActivity.this, find_session.class);
+        String course = ((Button)v).getText().toString();
+        i.putExtra("COURSE", course);
+        startActivity(i);
     }
 
 }

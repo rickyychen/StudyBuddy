@@ -17,12 +17,5 @@ public class session extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_session);
 
-        /*move = findViewById(R.id.course1_button);
-        move.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(session.this, HomeFragment.class);
-            }
-        });*/
     }
 }

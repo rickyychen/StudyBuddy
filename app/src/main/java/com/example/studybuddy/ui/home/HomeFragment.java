@@ -39,18 +39,6 @@ public class HomeFragment extends Fragment {
                 textView.setText(s);
             }
         });
-        /*
-        View v=inflater.inflate(R.layout.fragment_home , container, false);
-        v.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, session.class);
-                startActivity(intent);
-
-            }
-        });*/
-
 
         return root;
     }

@@ -20,11 +20,13 @@ public class Event {
     @ColumnInfo(name = "eventlocation")
     public String eventLocation;
 
-    public Event(String eventName, String eventDate, String eventTime, String eventDescription){
+    public Event(String eventName, String eventDate, String eventTime, String eventDescription, String eventLocation){
         this.eventName = eventName;
         this.eventDate = eventDate;
         this.eventTime = eventTime;
         this.eventDescription = eventDescription;
+        this.eventLocation = eventLocation;
+
     }
 
 

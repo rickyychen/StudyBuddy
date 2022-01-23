@@ -22,9 +22,7 @@ import com.example.studybuddy.betterdb.Event;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-public class host_session extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
-
-    String[] locations = {"McLennan", "Redpath", "McConell", "Trottier"};
+public class host_session extends AppCompatActivity{
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -32,17 +30,12 @@ public class host_session extends AppCompatActivity implements AdapterView.OnIte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_host_session);
 
-        Spinner spin = (Spinner) findViewById(R.id.spinner_location);
-        spin.setOnItemSelectedListener(this);
 
-        ArrayAdapter aa = new ArrayAdapter(this, android.R.layout.simple_spinner_item, locations);
-        aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spin.setAdapter(aa);
 
         DatePicker datepicker = (DatePicker) findViewById(R.id.datePicker1);
-        int   day  = datepicker.getDayOfMonth();
-        int   month= datepicker.getMonth();
-        int   year = datepicker.getYear();
+        int day = datepicker.getDayOfMonth();
+        int month = datepicker.getMonth();
+        int year = datepicker.getYear();
         Calendar calendar = Calendar.getInstance();
         calendar.set(year, month, day);
 
@@ -57,24 +50,19 @@ public class host_session extends AppCompatActivity implements AdapterView.OnIte
 
         EditText description = (EditText) findViewById(R.id.description);
         String descriptionValue = description.getText().toString();
+        EditText study = (EditText) findViewById(R.id.name);
+        String studyName = study.getText().toString();
+        EditText location = (EditText) findViewById(R.id.location);
+        String locationValue = location.getText().toString();
+
 
         final Button button = findViewById(R.id.button3);
-        button.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v){
-                Event newEvent = new Event(formatedDate, time, descriptionValue);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Event newEvent = new Event(studyName, formatedDate, time, descriptionValue, locationValue);
                 Intent intent = new Intent(host_session.this, MainActivity.class);
                 startActivity(intent);
             }
         });
-    }
-
-    @Override
-    public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id){
-        return;
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> arg0){
-        return;
     }
 }

@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
                 final List<Event> events = eventDao.getAllEvents();
 
                 //Course comp2 = courses.get(0);
-                Course comp2 = coursedao.getCoursefromDB(course1.name);
+                Course comp2 = coursedao.getCoursefromName(course1.name);
                 Student stud1 = students.get(0);
                 Event event1 = events.get(0);
 

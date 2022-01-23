@@ -14,6 +14,10 @@ public interface EventDao {
     @Query("SELECT * FROM events")
     List<Event> getAllEvents();
 
+    @Query("SELECT * FROM events where eventid= :eventId")
+    public Event getEventByID(long eventId);
+
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertEvent(Event event);
 

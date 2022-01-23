@@ -11,6 +11,7 @@
         android:theme="@style/Theme.StudyBuddy">
         <activity
             android:name=".ui.home.join"
+            android:label="Join"
             android:exported="false" />
         <activity
             android:name=".ui.home.find_session"

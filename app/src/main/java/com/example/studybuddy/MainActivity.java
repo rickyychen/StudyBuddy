@@ -22,7 +22,7 @@ import com.example.studybuddy.databinding.ActivityMainBinding;
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
-    private Button move;
+    //private Button move;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,13 +41,18 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
 
-        move = findViewById(R.id.course1_button);
+        /*move = findViewById(R.id.course1_button);
         move.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, find_session.class);
                 startActivity(intent);
             }
-        });
+        });*/
+    }
+        public void course_select(View v){
+            Intent i = new Intent(MainActivity.this, find_session.class);
+            startActivity(i);
+        }
 
-}}
+}
 

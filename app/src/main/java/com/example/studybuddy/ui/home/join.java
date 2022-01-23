@@ -69,14 +69,24 @@ public class join extends AppCompatActivity {
     public static class SessionViewHolder extends RecyclerView.ViewHolder{
 
         private TextView session_name;
+        private TextView session_location;
+        private TextView session_description;
+        private TextView session_time;
 
         public SessionViewHolder(@NonNull View itemView) {
             super(itemView);
             session_name = (TextView) ViewCompat.requireViewById(itemView, R.id.session_name);
+            session_location = (TextView) ViewCompat.requireViewById(itemView, R.id.session_name);
+            session_description = (TextView) ViewCompat.requireViewById(itemView, R.id.session_description);
+            session_time = (TextView) ViewCompat.requireViewById(itemView, R.id.session_time);
+
         }
 
         public void bind(Event event){
             session_name.setText(event.eventName);
+            session_location.setText(event.eventLocation);
+            session_description.setText(event.eventDescription);
+            session_time.setText(event.eventTime);
 
         }
     }

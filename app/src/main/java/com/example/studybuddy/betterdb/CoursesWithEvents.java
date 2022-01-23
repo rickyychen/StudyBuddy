@@ -14,9 +14,9 @@ public class CoursesWithEvents {
     @Relation(
             parentColumn = "id", //f
             entityColumn = "eventId", //f
-            entity = Student.class, //c
-            associateBy = @Junction(EnrolledCourses.class)
+            entity = Event.class, //c
+            associateBy = @Junction(CreatedEvent.class)
 
     )
-    public List<Event> HostedCourses;
+    public List<Event> EnrolledEvents;
 }

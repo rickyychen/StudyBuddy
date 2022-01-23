@@ -15,9 +15,13 @@ import androidx.room.Room;
 
 import com.example.studybuddy.betterdb.Course;
 import com.example.studybuddy.betterdb.CourseDao;
+import com.example.studybuddy.betterdb.CoursesWithEvents;
+import com.example.studybuddy.betterdb.CoursesWithEventsDao;
 import com.example.studybuddy.betterdb.CoursesWithStudents;
 import com.example.studybuddy.betterdb.CoursesWithStudentsDao;
+import com.example.studybuddy.betterdb.CreatedEvent;
 import com.example.studybuddy.betterdb.EnrolledCourses;
+import com.example.studybuddy.betterdb.Event;
 import com.example.studybuddy.betterdb.EventDao;
 import com.example.studybuddy.betterdb.Student;
 import com.example.studybuddy.betterdb.StudentDao;
@@ -56,6 +60,11 @@ public class MainActivity extends AppCompatActivity {
 
         Student student1 = new Student(1, "John", "Doe");
 
+        Event event1 = new Event();
+
+        event1.eventId = 1;
+        event1.eventName = "study seshhhhhhh";
+
         Executor executor = Executors.newSingleThreadExecutor();
         executor.execute(new Runnable() {
             @Override
@@ -69,17 +78,30 @@ public class MainActivity extends AppCompatActivity {
 
 
                 CoursesWithStudentsDao courseswithstudentsdao = dbtool.getCoursesWithStudentsDao();
+                CoursesWithEventsDao coursesWithEventsDao = dbtool.getCoursesWithEventsDao();
                 coursedao.insertCourse(course1);
                 studentdao.insertStudent(student1);
+                eventDao.insertEvent(event1);
+
                 final List<Course> courses = coursedao.getAllCourses();
                 final List<Student> students = studentdao.getAllStudents();
+                final List<Event> events = eventDao.getAllEvents();
+
                 Course comp2 = courses.get(0);
                 Student stud1 = students.get(0);
+                Event event1 = events.get(0);
+
                 EnrolledCourses enrolled = new EnrolledCourses();
                 enrolled.id = comp2.id;
                 enrolled.studentId = stud1.studentId;
                 courseswithstudentsdao.insert(enrolled);
+
+                CreatedEvent createdEvent = new CreatedEvent();
+                createdEvent.eventId = event1.eventId;
+                createdEvent.id = comp2.id;
+
                 List<CoursesWithStudents> list = courseswithstudentsdao.getAllCoursesWithStudents();
+                List<CoursesWithEvents> listEvents = coursesWithEventsDao.getAllCoursesWithEvents();
                 runOnUiThread(new Runnable() {
 
                     @Override

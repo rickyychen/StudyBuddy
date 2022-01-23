@@ -4,20 +4,20 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.TimePicker;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
 
+import com.example.studybuddy.Database;
 import com.example.studybuddy.MainActivity;
 import com.example.studybuddy.R;
 import com.example.studybuddy.betterdb.Event;
+import com.example.studybuddy.betterdb.EventDao;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -59,7 +59,9 @@ public class host_session extends AppCompatActivity{
         final Button button = findViewById(R.id.button3);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                Database dbtool = Room.databaseBuilder(getApplicationContext(), Database.class, "StudyBuddy").build();
                 Event newEvent = new Event(studyName, formatedDate, time, descriptionValue, locationValue);
+                EventDao eventDao = dbtool.getEventDao();
                 Intent intent = new Intent(host_session.this, MainActivity.class);
                 startActivity(intent);
             }

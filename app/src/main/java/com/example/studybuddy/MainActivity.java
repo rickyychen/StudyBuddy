@@ -56,11 +56,11 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(binding.navView, navController);
 
 
-        Course course1 = new Course(1000, "comp202");
+        Course course1 = new Course( "comp202");
 
-        Student student1 = new Student(1, "John", "Doe");
+        Student student1 = new Student("John", "Doe");
 
-        Event event1 = new Event(1, "study seshhhhh", "day/month/year","HH:MM A.M", "something describing the event");
+        Event event1 = new Event("study seshhhhh", "day/month/year","HH:MM A.M", "something describing the event");
 
         Executor executor = Executors.newSingleThreadExecutor();
         executor.execute(new Runnable() {

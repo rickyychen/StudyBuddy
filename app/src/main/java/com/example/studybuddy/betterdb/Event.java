@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey;
 @Entity(tableName = "events")
 public class Event {
 
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     public long eventId;
     @ColumnInfo(name = "eventname")
     public String eventName;
@@ -20,8 +20,7 @@ public class Event {
     @ColumnInfo(name = "eventlocation")
     public String eventLocation;
 
-    public Event(long eventId, String eventName, String eventDate, String eventTime, String eventDescription){
-        this.eventId = eventId;
+    public Event(String eventName, String eventDate, String eventTime, String eventDescription){
         this.eventName = eventName;
         this.eventDate = eventDate;
         this.eventTime = eventTime;

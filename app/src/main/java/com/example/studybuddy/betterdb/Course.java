@@ -7,13 +7,12 @@ import androidx.room.PrimaryKey;
 @Entity(tableName = "courses")
 public class Course {
 
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     public long id;
     @ColumnInfo(name = "name")
     public String name;
 
-    public Course(long id, String name){
-        this.id = id;
+    public Course(String name){
         this.name = name;
     }
 }

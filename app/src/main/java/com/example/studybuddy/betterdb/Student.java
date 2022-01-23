@@ -8,17 +8,16 @@ import androidx.room.PrimaryKey;
 public class Student {
 
 
-    @PrimaryKey()
+    @PrimaryKey(autoGenerate = true)
     public long studentId;
     @ColumnInfo(name = "studentfirstname")
     public String StudentFirstName;
     @ColumnInfo(name = "studentlastname")
     public String StudentLastName;
 
-    public Student(long studentId, String StudentFirstName, String StudentLastName){
+    public Student(String StudentFirstName, String StudentLastName){
         this.StudentFirstName = StudentFirstName;
         this.StudentLastName = StudentLastName;
-        this.studentId = studentId;
     }
 
 }

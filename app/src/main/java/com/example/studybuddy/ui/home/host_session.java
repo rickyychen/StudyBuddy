@@ -61,7 +61,7 @@ public class host_session extends AppCompatActivity implements AdapterView.OnIte
         final Button button = findViewById(R.id.button3);
         button.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                Event newEvent = new Event(eventId, formatedDate, time, descriptionValue);
+                Event newEvent = new Event(formatedDate, time, descriptionValue);
                 Intent intent = new Intent(host_session.this, MainActivity.class);
                 startActivity(intent);
             }

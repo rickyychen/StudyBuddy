@@ -14,6 +14,13 @@ public interface CourseDao {
     @Query("SELECT * FROM courses")
     List<Course> getAllCourses();
 
+    @Query("SELECT * FROM courses WHERE name LIKE :course " )
+    public Course getCoursefromName(String course);
+
+    @Query("SELECT * FROM courses WHERE id= :id")
+    public Course getCoursefromId(long id);
+
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertCourse(Course course);
 

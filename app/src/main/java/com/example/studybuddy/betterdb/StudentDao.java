@@ -14,6 +14,14 @@ public interface StudentDao {
     @Query("SELECT * FROM students")
     List<Student> getAllStudents();
 
+    @Query("SELECT * FROM students WHERE studentlastname LIKE :pLastName")
+    List<Student> getStudentsFromLastName(String pLastName);
+
+    @Query("SELECT * FROM students WHERE studentfirstname LIKE :pFirstName")
+    List<Student> getStudentsFromFirstName(String pFirstName);
+
+    @Query("SELECT * FROM students WHERE studentId = :pId")
+    List<Student> getStudentsFromStudentId(long pId);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertStudent(Student student);

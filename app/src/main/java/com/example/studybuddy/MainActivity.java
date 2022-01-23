@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
         Student student1 = new Student(1, "John", "Doe");
 
-        Event event1 = new Event(1, "study seshhhhh", "day/month/year","HH:MM A.M");
+        Event event1 = new Event(1, "study seshhhhh", "day/month/year","HH:MM A.M", "something describing the event");
 
         Executor executor = Executors.newSingleThreadExecutor();
         executor.execute(new Runnable() {

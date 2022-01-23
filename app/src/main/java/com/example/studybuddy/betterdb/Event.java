@@ -1,10 +1,8 @@
 package com.example.studybuddy.betterdb;
 
-import androidx.navigation.NavDestination;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
-import java.util.Date;
 
 @Entity(tableName = "events")
 public class Event {
@@ -17,12 +15,15 @@ public class Event {
     public String eventDate;
     @ColumnInfo(name = "eventtime")
     public String eventTime;
+    @ColumnInfo(name = "eventdescription")
+    public String eventDescription;
 
-    public Event(long eventId, String eventName, String eventDate, String eventTime){
+    public Event(long eventId, String eventName, String eventDate, String eventTime, String eventDescription){
         this.eventId = eventId;
         this.eventName = eventName;
         this.eventDate = eventDate;
         this.eventTime = eventTime;
+        this.eventDescription = eventDescription;
     }
 
 

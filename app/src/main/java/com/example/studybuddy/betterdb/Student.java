@@ -14,6 +14,8 @@ public class Student {
     public String StudentFirstName;
     @ColumnInfo(name = "studentlastname")
     public String StudentLastName;
+    @ColumnInfo(name = "studentactivecourse")
+    public long ActiveCourse;
 
     public Student(String StudentFirstName, String StudentLastName){
         this.StudentFirstName = StudentFirstName;

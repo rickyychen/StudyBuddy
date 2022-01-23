@@ -55,12 +55,14 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
 
-
-        Course course1 = new Course( "comp202");
-
+        Course course1 = new Course( "COMP 202");
+        course1.id = 202;
+        Course course2 = new Course("COMP 273");
+        course2.id = 273;
+        Course course3 = new Course("COMP 206");
+        course3.id = 206;
         Student student1 = new Student("John", "Doe");
-
-        Event event1 = new Event("study seshhhhh", "day/month/year","HH:MM A.M", "something describing the event", "Trottier");
+        student1.studentId = 0;
 
         Executor executor = Executors.newSingleThreadExecutor();
         executor.execute(new Runnable() {
@@ -71,35 +73,32 @@ public class MainActivity extends AppCompatActivity {
                 Database dbtool = Room.databaseBuilder(getApplicationContext(), Database.class, "StudyBuddy").build();
                 CourseDao coursedao = dbtool.getCourseDao();
                 StudentDao studentdao = dbtool.getStudentDao();
-                EventDao eventDao = dbtool.getEventDao();
-
 
                 CoursesWithStudentsDao courseswithstudentsdao = dbtool.getCoursesWithStudentsDao();
                 CoursesWithEventsDao coursesWithEventsDao = dbtool.getCoursesWithEventsDao();
                 coursedao.insertCourse(course1);
+                coursedao.insertCourse(course2);
+                coursedao.insertCourse(course3);
                 studentdao.insertStudent(student1);
-                eventDao.insertEvent(event1);
 
                 final List<Course> courses = coursedao.getAllCourses();
                 final List<Student> students = studentdao.getAllStudents();
-                final List<Event> events = eventDao.getAllEvents();
 
                 //Course comp2 = courses.get(0);
-                Course comp2 = coursedao.getCoursefromName(course1.name);
+                //Course comp2 = coursedao.getCoursefromName(course1.name);
                 Student stud1 = students.get(0);
-                Event event1 = events.get(0);
 
-                EnrolledCourses enrolled = new EnrolledCourses();
-                enrolled.id = comp2.id;
-                enrolled.studentId = stud1.studentId;
-                courseswithstudentsdao.insert(enrolled);
+                //EnrolledCourses enrolled = new EnrolledCourses();
+                //enrolled.id = comp2.id;
+                //enrolled.studentId = stud1.studentId;
+                //courseswithstudentsdao.insert(enrolled);
 
-                CreatedEvent createdEvent = new CreatedEvent();
-                createdEvent.eventId = event1.eventId;
-                createdEvent.id = comp2.id;
+                //CreatedEvent createdEvent = new CreatedEvent();
+                //createdEvent.eventId = event1.eventId;
+                //createdEvent.id = comp2.id;
 
                 List<CoursesWithStudents> list = courseswithstudentsdao.getAllCoursesWithStudents();
-                List<CoursesWithEvents> listEvents = coursesWithEventsDao.getAllCoursesWithEvents();
+                //List<CoursesWithEvents> listEvents = coursesWithEventsDao.getAllCoursesWithEvents();
 
                 runOnUiThread(new Runnable() {
 
@@ -121,6 +120,26 @@ public class MainActivity extends AppCompatActivity {
     public void course_select(View v){
         Intent i = new Intent(MainActivity.this, find_session.class);
         String course = ((Button)v).getText().toString();
+
+        Executor executor = Executors.newSingleThreadExecutor();
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+
+                // SETTING UP ALL THE DAOS
+                Database dbtool = Room.databaseBuilder(getApplicationContext(), Database.class, "StudyBuddy").build();
+                CourseDao courseDao = dbtool.getCourseDao();
+
+                StudentDao studentdao = dbtool.getStudentDao();
+                Student stud = studentdao.getStudentsFromStudentId(0);
+                stud.ActiveCourse = courseDao.getCoursefromName(course).id;
+                studentdao.insertStudent(stud);
+
+
+            }
+        });
+
+
         i.putExtra("COURSE", course);
         startActivity(i);
     }

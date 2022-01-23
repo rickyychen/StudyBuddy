@@ -16,8 +16,14 @@ import androidx.room.Room;
 import com.example.studybuddy.Database;
 import com.example.studybuddy.MainActivity;
 import com.example.studybuddy.R;
+import com.example.studybuddy.betterdb.CoursesWithEvents;
+import com.example.studybuddy.betterdb.CoursesWithEventsDao;
+import com.example.studybuddy.betterdb.CoursesWithStudents;
+import com.example.studybuddy.betterdb.CreatedEvent;
 import com.example.studybuddy.betterdb.Event;
 import com.example.studybuddy.betterdb.EventDao;
+import com.example.studybuddy.betterdb.Student;
+import com.example.studybuddy.betterdb.StudentDao;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -60,8 +66,19 @@ public class host_session extends AppCompatActivity{
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Database dbtool = Room.databaseBuilder(getApplicationContext(), Database.class, "StudyBuddy").build();
+
+                StudentDao studentDao = dbtool.getStudentDao();
+                Student studMuffin = studentDao.getStudentsFromStudentId(0);
+
                 Event newEvent = new Event(studyName, formatedDate, time, descriptionValue, locationValue);
                 EventDao eventDao = dbtool.getEventDao();
+
+                CoursesWithEventsDao coursesWithEventsDao = dbtool.getCoursesWithEventsDao();
+                CreatedEvent createdEvent = new CreatedEvent();
+                createdEvent.eventId = newEvent.eventId;
+                createdEvent.id = studMuffin.ActiveCourse;
+                coursesWithEventsDao.insert(createdEvent);
+
                 Intent intent = new Intent(host_session.this, MainActivity.class);
                 startActivity(intent);
             }

@@ -102,6 +102,7 @@ public class MainActivity extends AppCompatActivity {
 
                 List<CoursesWithStudents> list = courseswithstudentsdao.getAllCoursesWithStudents();
                 List<CoursesWithEvents> listEvents = coursesWithEventsDao.getAllCoursesWithEvents();
+
                 runOnUiThread(new Runnable() {
 
                     @Override

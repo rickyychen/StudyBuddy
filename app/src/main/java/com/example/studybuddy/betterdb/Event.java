@@ -16,7 +16,14 @@ public class Event {
     @ColumnInfo(name = "eventdate")
     public String eventDate;
     @ColumnInfo(name = "eventtime")
-    public String EventTime;
+    public String eventTime;
+
+    public Event(long eventId, String eventName, String eventDate, String eventTime){
+        this.eventId = eventId;
+        this.eventName = eventName;
+        this.eventDate = eventDate;
+        this.eventTime = eventTime;
+    }
 
 
 

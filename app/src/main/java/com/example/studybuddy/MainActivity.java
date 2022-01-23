@@ -60,10 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
         Student student1 = new Student(1, "John", "Doe");
 
-        Event event1 = new Event();
-
-        event1.eventId = 1;
-        event1.eventName = "study seshhhhhhh";
+        Event event1 = new Event(1, "study seshhhhh", "day/month/year","HH:MM A.M");
 
         Executor executor = Executors.newSingleThreadExecutor();
         executor.execute(new Runnable() {
@@ -87,7 +84,8 @@ public class MainActivity extends AppCompatActivity {
                 final List<Student> students = studentdao.getAllStudents();
                 final List<Event> events = eventDao.getAllEvents();
 
-                Course comp2 = courses.get(0);
+                //Course comp2 = courses.get(0);
+                Course comp2 = coursedao.getCoursefromDB(course1.name);
                 Student stud1 = students.get(0);
                 Event event1 = events.get(0);
 
